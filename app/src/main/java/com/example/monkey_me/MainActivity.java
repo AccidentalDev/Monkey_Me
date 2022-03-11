@@ -14,23 +14,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        BodyPartFragment mouthFragment = new BodyPartFragment();
-        mouthFragment.setmImageIDs(AndroidImageAssets.getMouths());
-        mouthFragment.setmImageIndex(0);
+        if(savedInstanceState == null) {
+            BodyPartFragment mouthFragment = new BodyPartFragment();
+            mouthFragment.setmImageIDs(AndroidImageAssets.getMouths());
+            mouthFragment.setmImageIndex(0);
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().add(R.id.mouth_container, mouthFragment).commit();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().add(R.id.mouth_container, mouthFragment).commit();
 
-        BodyPartFragment eyesFragment = new BodyPartFragment();
-        eyesFragment.setmImageIDs(AndroidImageAssets.getEyes());
-        eyesFragment.setmImageIndex(0);
+            BodyPartFragment eyesFragment = new BodyPartFragment();
+            eyesFragment.setmImageIDs(AndroidImageAssets.getEyes());
+            eyesFragment.setmImageIndex(0);
 
-        fragmentManager.beginTransaction().add(R.id.eyes_container, eyesFragment).commit();
+            fragmentManager.beginTransaction().add(R.id.eyes_container, eyesFragment).commit();
 
-        BodyPartFragment clothesFragment = new BodyPartFragment();
-        clothesFragment.setmImageIDs(AndroidImageAssets.getClothes());
-        clothesFragment.setmImageIndex(0);
+            BodyPartFragment clothesFragment = new BodyPartFragment();
+            clothesFragment.setmImageIDs(AndroidImageAssets.getClothes());
+            clothesFragment.setmImageIndex(0);
 
-        fragmentManager.beginTransaction().add(R.id.clothes_container, clothesFragment).commit();
+            fragmentManager.beginTransaction().add(R.id.clothes_container, clothesFragment).commit();
+        }
     }
 }
