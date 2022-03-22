@@ -22,48 +22,5 @@
         android:layout_height="match_parent"
         android:background="@android:color/darker_gray" />
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/monkey_me_linear_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp">
-
-        <FrameLayout
-            android:id="@+id/mouth_container"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-        </FrameLayout>
-
-        <FrameLayout
-            android:id="@+id/eyes_container"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/mouth_container">
-
-        </FrameLayout>
-
-        <FrameLayout
-            android:id="@+id/clothes_container"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintBottom_toBottomOf="@id/mouth_container"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-        </FrameLayout>
-    </android.support.constraint.ConstraintLayout>
-
+    <include layout="@layout/activity_monkey_me"/>
 </LinearLayout>

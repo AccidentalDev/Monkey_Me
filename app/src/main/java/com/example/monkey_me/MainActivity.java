@@ -25,15 +25,15 @@ public class MainActivity extends AppCompatActivity implements MasterListFragmen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if(findViewById(R.id.monkey_me_linear_layout) != null){
+        if(findViewById(R.id.main_linear_layout) != null){
             mTwoPane = true;
 
             Button nextButton = findViewById(R.id.next_button);
             nextButton.setVisibility(View.GONE);
-
+/*
             GridView gridView = findViewById(R.id.master_grid_view);
-            //gridView.setNumColumns(1);
-
+            gridView.setNumColumns(1);
+*/
             BodyPartFragment mouthFragment = new BodyPartFragment();
             mouthFragment.setmImageIDs(AndroidImageAssets.getMouths());
             mouthFragment.setmImageIndex(mouthIndex);
@@ -52,6 +52,19 @@ public class MainActivity extends AppCompatActivity implements MasterListFragmen
             clothesFragment.setmImageIndex(clothesIndex);
 
             fragmentManager.beginTransaction().add(R.id.clothes_container, clothesFragment).commit();
+        }else{
+            Button nextButton = findViewById(R.id.next_button);
+            nextButton.setOnClickListener(view -> {
+                Bundle bodyPartsBundle = new Bundle();
+                bodyPartsBundle.putInt("mouthIndex", mouthIndex);
+                bodyPartsBundle.putInt("eyesIndex", eyesIndex);
+                bodyPartsBundle.putInt("clothesIndex", clothesIndex);
+
+                final Intent intent = new Intent(getApplicationContext(), MonkeyMeActivity.class);
+                intent.putExtras(bodyPartsBundle);
+
+                startActivity(intent);
+            });
         }
     }
 
@@ -81,8 +94,6 @@ public class MainActivity extends AppCompatActivity implements MasterListFragmen
                 default:
                     Log.v("MainActivity", "Error getting body part index");
             }
-
-
         }else {
             switch (bodyPartNumber) {
                 case 0:
@@ -97,23 +108,6 @@ public class MainActivity extends AppCompatActivity implements MasterListFragmen
                 default:
                     break;
             }
-
-            Bundle bodyPartsBundle = new Bundle();
-            bodyPartsBundle.putInt("mouthIndex", mouthIndex);
-            bodyPartsBundle.putInt("eyesIndex", eyesIndex);
-            bodyPartsBundle.putInt("clothesIndex", clothesIndex);
-
-            final Intent intent = new Intent(this, MonkeyMeActivity.class);
-            intent.putExtras(bodyPartsBundle);
-
-            //ToDo: Button logic should NOT be defined here! It can generate a bug where the NEXT button does nothing if no body part has ben touched first
-            Button nextButton = findViewById(R.id.next_button);
-            nextButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    startActivity(intent);
-                }
-            });
         }
     }
 }
